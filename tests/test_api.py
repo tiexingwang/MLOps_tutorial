@@ -6,7 +6,6 @@
 # y = 2 * x + 1
 # --------------------------------
 
-import pytest
 from MLOpsDemo.api import LinearNet, fit_predict
 import torch
 
