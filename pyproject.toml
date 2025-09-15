@@ -17,7 +17,7 @@ build-backend = "hatchling.build"
 name = "MLOpsDemo"  # The name of your project/package.
 version = "0.2.0"  # The current version of your project.
 description = "A tiny example to demonstrate MLOps and a linear net in PyTorch"  # Short summary of your project.
-readme = "README.md"  # Path to the README file, shown on PyPI.
+readme = "readme.md"  # Path to the README file, shown on PyPI.
 requires-python = ">=3.9"  # Minimum Python version required.
 license = { text = "MIT" }  # License type for your project.
 authors = [

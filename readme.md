@@ -19,7 +19,8 @@ X = torch.tensor([[1.0]])
 y = torch.tensor([[5.0]])
 
 # Quick training; returns a scalar loss (see tests)
-loss = fit_predict(X, y, epochs=100)
+pred, loss = fit_predict(X, y, epochs=100)
+print(pred)  # e.g., 0.05
 print(loss)  # e.g., 0.05
 
 # Optional: use the raw model forward (untrained in this snippet)
