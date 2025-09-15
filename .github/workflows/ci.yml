@@ -28,7 +28,7 @@ jobs: # Define the jobs to run
       - name: Lint (optional)
         run: |
           ruff --version || pip install ruff
-          ruff src tests
+          ruff check src tests
         # Step 4: Lint the code (optional)
         # - Check if ruff is installed, if not, install it
         # - Run ruff to check code style in the src and tests directories
