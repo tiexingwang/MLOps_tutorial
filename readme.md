@@ -5,7 +5,7 @@ A tiny example library API (linear net) built with PyTorch.
 ## Install (from TestPyPI after release)
 
 ```bash
-pip install --index-url https://test.pypi.org/simple/ mlopsdemo
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple MLOpsDemo
 ```
 
 ## Usage

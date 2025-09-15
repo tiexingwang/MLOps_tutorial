@@ -27,9 +27,10 @@ authors = [
 # 'dependencies' lists the packages required for your project to run.
 # These will be installed automatically when someone installs your package.
 dependencies = [
-    "numpy>=1.24,<3.0",  # Requires numpy version 1.24 or higher, but less than 3.0.
-    "torch>=2.0,<3.0"    # Requires torch version 2.0 or higher, but less than 3.0.
+    "numpy>=1.24,<3.0",  # This requires numpy version 1.24 or higher, but less than 3.0. This is generally safe, as PyTorch 2.x supports numpy 1.24+, and numpy 2.x is not officially released yet (as of June 2024).
+    "torch>=2.0,<3.0"    # This requires torch (PyTorch) version 2.0 or higher, but less than 3.0. PyTorch 2.x is the current stable major version and is suitable for most deep learning projects. Version 3.x is not released yet.
 ]
+
 
 # [project.optional-dependencies] allows you to specify extra dependencies for development or testing.
 # These are not required for normal use, but are helpful for contributors.
