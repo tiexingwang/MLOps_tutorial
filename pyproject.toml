@@ -1,0 +1,49 @@
+# -------------------------------
+# pyproject.toml
+# This file contains the configuration for building, packaging, and managing dependencies for your Python project.
+# Each section is important for different tools and workflows.
+# -------------------------------
+
+# [build-system] tells pip and other build tools how to build your project.
+# 'requires' lists the build dependencies (here, 'hatchling' is a modern build backend).
+# 'build-backend' specifies the backend tool to use for building the project.
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# [project] contains the main metadata for your package.
+# This information is used by packaging tools and when uploading to PyPI.
+[project]
+name = "MLOpsDemo"  # The name of your project/package.
+version = "0.2.0"  # The current version of your project.
+description = "A tiny example to demonstrate MLOps and a linear net in PyTorch"  # Short summary of your project.
+readme = "README.md"  # Path to the README file, shown on PyPI.
+requires-python = ">=3.9"  # Minimum Python version required.
+license = { text = "MIT" }  # License type for your project.
+authors = [
+    { name = "TXWang", email = "tiexingwang1992@gmail.com" }  # Author information.
+]
+
+# 'dependencies' lists the packages required for your project to run.
+# These will be installed automatically when someone installs your package.
+dependencies = [
+    "numpy>=1.24,<3.0",  # Requires numpy version 1.24 or higher, but less than 3.0.
+    "torch>=2.0,<3.0"    # Requires torch version 2.0 or higher, but less than 3.0.
+]
+
+# [project.optional-dependencies] allows you to specify extra dependencies for development or testing.
+# These are not required for normal use, but are helpful for contributors.
+[project.optional-dependencies]
+dev = [
+    "pytest",       # Testing framework.
+    "build",        # Tool for building distributions.
+    "twine",        # Tool for uploading packages to PyPI.
+    "ruff",         # Linter for code quality.
+    "black",        # Code formatter.
+    "pytest-cov"    # Plugin for measuring test coverage.
+]
+
+# [tool.hatch.build.targets.wheel] is specific to the Hatch build tool.
+# It tells Hatch where your package source code is located.
+[tool.hatch.build.targets.wheel]
+packages = ["src/MLOpsDemo"]  # The path to your package's source code.
