@@ -34,7 +34,7 @@ with torch.no_grad():
 ## Project Overview
 
 - **Project Name**: MLOpsDemo
-- **Version**: 0.2.0
+- **Version**: 0.2.1
 - **Author**: Tiexing Wang
 - **License**: MIT
 
