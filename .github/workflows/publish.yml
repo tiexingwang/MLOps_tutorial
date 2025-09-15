@@ -1,0 +1,36 @@
+# This workflow is named "Publish (TestPyPI)"
+name: Publish (TestPyPI)
+
+# The workflow is triggered when a push event happens on a tag that starts with "v"
+on:
+  push:
+    tags:
+      - "v*" # Only run this workflow for tags like v1.0, v2.3.4, etc.
+
+jobs:
+  build-and-publish: # This is the name of the job
+    runs-on: ubuntu-latest # The job will run on the latest Ubuntu runner provided by GitHub
+
+    steps: # The list of steps to execute in this job
+      # Step 1: Check out the repository code so it can be used in the workflow
+      - uses: actions/checkout@v4 # Uses the official GitHub Action to check out code
+
+      # Step 2: Set up Python 3.10 on the runner
+      - uses: actions/setup-python@v5 # Uses the official GitHub Action to set up Python
+        with:
+          python-version: "3.10" # Specifies the version of Python to use
+
+      # Step 3: Build the distribution files (wheel and sdist)
+      - name: Build wheel & sdist # Name of this step
+        run: |
+          python -m pip install --upgrade pip build twine  # Upgrade pip and install build tools
+          python -m build  # Build both wheel (.whl) and source distribution (.tar.gz) in the dist/ folder
+          ls -l dist  # List the files in the dist/ directory to show what was built
+
+      # Step 4: Upload the built distributions to TestPyPI
+      - name: Upload to TestPyPI # Name of this step
+        env:
+          TWINE_USERNAME: __token__ # Use an API token for authentication (username is always __token__ for PyPI)
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }} # The actual token is stored securely in GitHub Secrets
+        run: |
+          python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*  # Upload all files in dist/ to TestPyPI
